@@ -1,0 +1,58 @@
+@startuml
+
+title Схема БД
+
+hide circle
+
+
+
+entity user {
+  * **id**  :  int
+  __
+  * **username**  :  varchar
+  --
+  * **password**  :  varchar
+}
+
+
+
+entity message {
+  * **id**  :  int
+  __
+  * **text**  :  varchar
+  __
+  * **date**  :  datetime
+  __
+  * **chat**  :  int
+  __
+  * **user**  :  int
+
+}
+
+entity chat {
+  * **id**  :  int
+  __
+  * **title**  :  varchar
+  __
+  * **info**  :  varchar
+  __
+  * **owner**  :  int
+}
+
+
+entity chat_user {
+  * **id**  :  int
+  __
+  * **user**  :  int
+  __
+  * **chat**  :  int
+}
+
+chat }o--|| message
+user }o--|| message
+user }o--|| chat_user
+chat }o--|| chat_user
+user }o--|| chat
+
+
+@enduml
